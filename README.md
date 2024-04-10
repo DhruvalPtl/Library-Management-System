@@ -15,7 +15,7 @@ The Library Management System (LMS) is a Python-based application designed to au
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your_username/library-management-system.git
+    git clone https://github.com/DhruvalPtl/library-management-system.git
     ```
 
 2. Install dependencies:
@@ -27,7 +27,7 @@ The Library Management System (LMS) is a Python-based application designed to au
 3. Run the application:
 
     ```bash
-    python main.py
+    python Login.py
     ```
 
 ## Usage
@@ -46,17 +46,5 @@ The Library Management System (LMS) is a Python-based application designed to au
 
 ## Contributors
 
-- John Doe (@johndoe)
-- Jane Smith (@janesmith)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Special thanks to [OpenAI](https://openai.com) for providing resources and support for this project.
-
----
-
-Feel free to modify and expand upon this README to include any additional information or customization specific to your project.
+- Dhruval Patel
+- 
