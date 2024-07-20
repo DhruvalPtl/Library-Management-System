@@ -1,6 +1,6 @@
-# Library Management System (LMS)
+# Library Management System With GUI
 
-The Library Management System (LMS) is a Python-based application designed to automate and simplify library operations. It provides librarians and users with a comprehensive solution for managing books, user accounts, borrowing, and database management.
+The Library Management System (LMS) with GUI is a Python-based application designed to automate and simplify library operations. It provides librarians and users with a comprehensive solution for managing books, user accounts, borrowing, and database management.
 
 ## Key Features
 
