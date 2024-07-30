@@ -2,9 +2,10 @@ import sys
 from PyQt6.QtWidgets import QApplication, QGridLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget, QMessageBox
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap,QIcon,QGuiApplication
-from main import MainWindow
+from database import logintodb, MakeDir
 import os
-from database import logintodb
+MakeDir.create_folder()
+from main import MainWindow
 
 class LoginWindow(QMainWindow):
     def __init__(self):
@@ -114,12 +115,12 @@ class LoginWindow(QMainWindow):
     def login(self):
         username = self.username_input.text()
         password = self.password_input.text()
-        
+            
         if not username or not password:
             self.show_message("Incomplete Information", "Please enter both username and password.")
-            return
+            return 
         
-        obj = logintodb()
+        obj = logintodb()        
         user, error = obj.login(username)
         
         if error:

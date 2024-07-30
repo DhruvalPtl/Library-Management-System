@@ -1,19 +1,36 @@
 import sqlite3
 import os
 import sys
+from pathlib import Path
 
+class MakeDir():
+    @staticmethod
+    def create_folder():
+        try:
+            base_path = Path("C:/Library Management System/Database")
+            db_file = base_path / "LMSDB.db"
+            os.makedirs(base_path, exist_ok=True)
+            conn = sqlite3.connect(db_file)
+            a = conn.cursor()
+            a.execute('''CREATE TABLE IF NOT EXISTS users(username TEXT PRIMARY KEY, password TEXT)''')
+            a.execute("create table if not exists bookinfo(book_id text PRIMARY KEY, book_name text, author_name text, status  text, borrower_id text, borrower_name text)")
+            conn.commit()
+            conn.close()
+        except sqlite3.Error as e:
+            return e
+        
 class logintodb():
     def  __init__(self):
         #self.database_login_path = os.path.join(os.getcwd(), "database", "LMS.db")
         #database_path = os.path.join(sys._MEIPASS, "LMS.db")
-        if getattr(sys, 'frozen', False):
-            base_path = sys._MEIPASS
-        else:
-            base_path = os.path.abspath(os.path.dirname(__file__))
-        database_path = os.path.join(base_path, "LMS.db")
+        # if getattr(sys, 'frozen', False):
+        #     base_path = sys._MEIPASS
+        # else:
+        #     base_path = os.path.abspath(os.path.dirname(__file__))
+        database_path = 'C:/Library Management System/Database/LMSDB.db'
         self.conn = sqlite3.connect(database_path)
         self.cursor = self.conn.cursor()
-    
+        
     def login(self,username):
         try:
             self.cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
@@ -38,13 +55,13 @@ class logintodb():
 class databasemanager():
     def  __init__(self):
         #self.database_access_path = os.path.join(os.getcwd(), "database", "LMS.db")
-        #database_path = os.path.join(sys._MEIPASS, "LMS.db")   
-        if getattr(sys, 'frozen', False):
-            base_path = sys._MEIPASS
-        else:
-            base_path = os.path.abspath(os.path.dirname(__file__))
+        # #database_path = os.path.join(sys._MEIPASS, "LMS.db")   
+        # if getattr(sys, 'frozen', False):
+        #     base_path = sys._MEIPASS
+        # else:
+        #     base_path = os.path.abspath(os.path.dirname(__file__))
 
-        database_path = os.path.join(base_path, "LMS.db")
+        database_path = 'C:/Library Management System/Database/LMSDB.db'
         self.conn = sqlite3.connect(database_path)
         self.cursor = self.conn.cursor()
 
@@ -102,7 +119,7 @@ class databasemanager():
 
     def add_book(self,book_name, book_id, author, status):
         try:
-            self.cursor.execute("insert into bookinfo(book_name, book_id, author_name, status) values(?,?,?,?)",(book_name, book_id, author, status))
+            self.cursor.execute("insert into bookinfo(book_name, book_id, author_name, status) values(?,?,?,?)",(book_name, book_id, author, status.capitalize()))
             self.conn.commit()
             return "OK",None
         except sqlite3.Error as e:
